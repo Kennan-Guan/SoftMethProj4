@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.softmethproject4.CurrentOrderController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="600.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="179.0" layoutY="14.0" text="Current Orders" textAlignment="CENTER">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <HBox layoutX="14.0" layoutY="76.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Order Number" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextArea fx:id="orderNumDisplay" editable="false" maxHeight="25.0" minHeight="25.0" prefHeight="35.0" prefWidth="100.0" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <ListView fx:id="orderDisplay" prefHeight="300.0" prefWidth="200.0">
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" />
+         </VBox.margin>
+      </ListView>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <HBox layoutX="26.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Subtotal $" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextArea fx:id="subtotalTextArea" editable="false" maxHeight="25.0" minHeight="25.0" prefHeight="10.0" prefWidth="100.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="26.0" layoutY="65.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Order Total $" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextArea fx:id="orderTotalTextArea" editable="false" maxHeight="25.0" minHeight="25.0" prefHeight="35.0" prefWidth="100.0" />
+               </children>
+            </HBox>
+            <Button fx:id="removePizzaButton" layoutX="458.0" layoutY="7.0" mnemonicParsing="false" onAction="#removePizza" text="Remove Pizza" />
+            <Button fx:id="placeOrderButton" layoutX="274.0" layoutY="72.0" mnemonicParsing="false" onAction="#placeOrder" text="Place Order" />
+            <Button fx:id="clearOrderButton" layoutX="464.0" layoutY="72.0" mnemonicParsing="false" onAction="#clearOrder" text="Clear Order" />
+            <HBox layoutX="228.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Sales Tax $" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextArea fx:id="salesTaxTextArea" editable="false" maxHeight="25.0" minHeight="25.0" prefHeight="35.0" prefWidth="100.0" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
