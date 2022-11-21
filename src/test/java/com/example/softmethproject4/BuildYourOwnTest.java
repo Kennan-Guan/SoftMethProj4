@@ -5,8 +5,17 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * This class is a JUnit Test for the BuildYourOwn Class.
+ * This class will test the price() method of the BuildYourOwn Class.
+ */
 class BuildYourOwnTest {
 
+    /**
+     * This test method will test the price() method of a BuildYourOwn Pizza object with 0 toppings added.
+     * This method will test both Chicago Style and New York Style pizzas, and for each style this method
+     * will also test the price() method for a small, medium, and large pizza with 0 toppings.
+     */
     @Test
     public void test_BuildYourOwnPizza_0_toppings() {
         Pizza p = new BuildYourOwn(new ArrayList<Topping>(), Crust.PAN, Size.SMALL);
@@ -40,6 +49,11 @@ class BuildYourOwnTest {
         assertEquals(expectedOutput, actualOutput, 0);
     }
 
+    /**
+     * This test method will test the price() method of a BuildYourOwn Pizza object with 1 toppings added.
+     * This method will test both Chicago Style and New York Style pizzas, and for each style this method
+     * will also test the price() method for a small, medium, and large pizza with 1 toppings.
+     */
     @Test
     public void test_BuildYourOwnPizza_1_toppings() {
         Pizza p = new BuildYourOwn(new ArrayList<Topping>(Arrays.asList(Topping.BBQCHICKEN)), Crust.PAN, Size.SMALL);
@@ -73,6 +87,11 @@ class BuildYourOwnTest {
         assertEquals(expectedOutput, actualOutput, 0);
     }
 
+    /**
+     * This test method will test the price() method of a BuildYourOwn Pizza object with 2 toppings added.
+     * This method will test both Chicago Style and New York Style pizzas, and for each style this method
+     * will also test the price() method for a small, medium, and large pizza with 2 toppings.
+     */
     @Test
     public void test_BuildYourOwnPizza_2_toppings() {
         Pizza p = new BuildYourOwn(new ArrayList<Topping>(Arrays.asList(Topping.BBQCHICKEN, Topping.CHEDDAR)), Crust.PAN, Size.SMALL);
@@ -106,6 +125,11 @@ class BuildYourOwnTest {
         assertEquals(expectedOutput, actualOutput, 0);
     }
 
+    /**
+     * This test method will test the price() method of a BuildYourOwn Pizza object with 3 toppings added.
+     * This method will test both Chicago Style and New York Style pizzas, and for each style this method
+     * will also test the price() method for a small, medium, and large pizza with 3 toppings.
+     */
     @Test
     public void test_BuildYourOwnPizza_3_toppings() {
         Pizza p = new BuildYourOwn(new ArrayList<Topping>(Arrays.asList(Topping.BBQCHICKEN, Topping.CHEDDAR, Topping.PINEAPPLE)), Crust.PAN, Size.SMALL);
@@ -139,6 +163,11 @@ class BuildYourOwnTest {
         assertEquals(expectedOutput, actualOutput, 0);
     }
 
+    /**
+     * This test method will test the price() method of a BuildYourOwn Pizza object with 4 toppings added.
+     * This method will test both Chicago Style and New York Style pizzas, and for each style this method
+     * will also test the price() method for a small, medium, and large pizza with 4 toppings.
+     */
     @Test
     public void test_BuildYourOwnPizza_4_toppings() {
         Pizza p = new BuildYourOwn(new ArrayList<Topping>(Arrays.asList(Topping.BBQCHICKEN, Topping.CHEDDAR, Topping.PINEAPPLE, Topping.PEPPERONI)), Crust.PAN, Size.SMALL);
@@ -172,6 +201,11 @@ class BuildYourOwnTest {
         assertEquals(expectedOutput, actualOutput, 0);
     }
 
+    /**
+     * This test method will test the price() method of a BuildYourOwn Pizza object with 5 toppings added.
+     * This method will test both Chicago Style and New York Style pizzas, and for each style this method
+     * will also test the price() method for a small, medium, and large pizza with 5 toppings.
+     */
     @Test
     public void test_BuildYourOwnPizza_5_toppings() {
         Pizza p = new BuildYourOwn(new ArrayList<Topping>(Arrays.asList(Topping.BBQCHICKEN, Topping.CHEDDAR, Topping.PINEAPPLE, Topping.PEPPERONI, Topping.GREENPEPPER)), Crust.PAN, Size.SMALL);
@@ -205,6 +239,11 @@ class BuildYourOwnTest {
         assertEquals(expectedOutput, actualOutput, 0);
     }
 
+    /**
+     * This test method will test the price() method of a BuildYourOwn Pizza object with 5 toppings added.
+     * This method will test both Chicago Style and New York Style pizzas, and for each style this method
+     * will also test the price() method for a small, medium, and large pizza with 5 toppings.
+     */
     @Test
     public void test_BuildYourOwnPizza_6_toppings() {
         Pizza p = new BuildYourOwn(new ArrayList<Topping>(Arrays.asList(Topping.BBQCHICKEN, Topping.CHEDDAR, Topping.PINEAPPLE, Topping.PEPPERONI, Topping.GREENPEPPER, Topping.HAM)), Crust.PAN, Size.SMALL);
@@ -238,6 +277,11 @@ class BuildYourOwnTest {
         assertEquals(expectedOutput, actualOutput, 0);
     }
 
+    /**
+     * This test method will test the price() method of a BuildYourOwn Pizza object with 7 toppings added.
+     * This method will test both Chicago Style and New York Style pizzas, and for each style this method
+     * will also test the price() method for a small, medium, and large pizza with 7 toppings.
+     */
     @Test
     public void test_BuildYourOwnPizza_7_toppings() {
         Pizza p = new BuildYourOwn(new ArrayList<Topping>(Arrays.asList(Topping.BBQCHICKEN, Topping.CHEDDAR, Topping.PINEAPPLE, Topping.PEPPERONI, Topping.GREENPEPPER, Topping.HAM, Topping.MUSHROOM)), Crust.PAN, Size.SMALL);
