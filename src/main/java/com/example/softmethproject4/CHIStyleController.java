@@ -18,15 +18,15 @@ import java.util.ArrayList;
  */
 public class CHIStyleController {
 
-    Pizza currentPizza;
+    private Pizza currentPizza;
 
-    ArrayList<Pizza> pizzaList;
+    private ArrayList<Pizza> pizzaList;
 
-    ArrayList<Topping> currentToppings;
+    private ArrayList<Topping> currentToppings;
 
-    ObservableList<Topping> offeredToppings;
+    private ObservableList<Topping> offeredToppings;
 
-    Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
+    private Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
 
     private final static double TOPPINGPRICE = 1.59;
     @FXML
