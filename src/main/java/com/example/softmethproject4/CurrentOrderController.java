@@ -24,13 +24,13 @@ import javafx.scene.control.TextArea;
 public class CurrentOrderController {
 
     private Order currentOrder;
-    double subPrice;
-    double orderTotal;
-    double salesTax;
+    private double subPrice;
+    private double orderTotal;
+    private double salesTax;
 
-    ObservableList<String> currentPizzas = FXCollections.observableArrayList();
+    private ObservableList<String> currentPizzas = FXCollections.observableArrayList();
 
-    Alert noPizzas = new Alert(AlertType.WARNING);
+    private Alert noPizzas = new Alert(AlertType.WARNING);
 
     private ArrayList<Order> allOrders;
 

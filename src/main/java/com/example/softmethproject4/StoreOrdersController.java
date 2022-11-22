@@ -23,8 +23,8 @@ import javafx.scene.control.TextArea;
  */
 public class StoreOrdersController {
 
-    ObservableList<Integer> orderSerialNumbers = FXCollections.observableArrayList();
-    ObservableList<String> currentOrders = FXCollections.observableArrayList();
+    private ObservableList<Integer> orderSerialNumbers = FXCollections.observableArrayList();
+    private ObservableList<String> currentOrders = FXCollections.observableArrayList();
     private static StoreOrder orders;
 
     @FXML
