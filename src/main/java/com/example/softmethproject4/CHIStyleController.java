@@ -154,7 +154,7 @@ public class CHIStyleController {
      * an alert is shown to the user with confirmation. This method will do nothing if no pizza is selected to add.
      */
     @FXML
-    protected void submitOrder(){
+    protected void submitOrder() {
         if (toppingOptions.getValue() != null) {
             pizzaList.add(currentPizza);
             addedToppingsList.getItems().clear();

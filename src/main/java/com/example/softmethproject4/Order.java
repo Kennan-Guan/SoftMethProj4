@@ -81,10 +81,15 @@ public class Order implements Customizable {
      * @return a textual representation of an Order object.
      */
     public String toString() {
+        double totalPrice = 0.0;
         String orderString = "Order Number: " + this.getSerialNumber() +"\n";
         for (Pizza pizza: this.currentOrder) {
             orderString += pizza.toString() + "\n";
+            totalPrice += pizza.price();
         }
+        totalPrice *= 1.06625;
+        orderString += "Order Total: $";
+        orderString += String.format("%.2f", totalPrice);
         orderString += "\n\n";
         return orderString;
     }
