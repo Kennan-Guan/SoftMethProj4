@@ -51,10 +51,15 @@ public class StoreOrdersController {
     protected void displayCurrentOrder(ActionEvent event) {
         orderTotal.clear();
         orderDisplay.getItems().clear();
+
+        if (orderNumList.getSelectionModel().getSelectedItem() == null) {
+            return;
+        }
+
         double orderPrice = 0;
-        for (int x = 0; x < this.orders.getOrders().size(); x++) {
-            if (orderNumList.getSelectionModel().getSelectedIndex() + 1 == this.orders.getOrders().get(x).getSerialNumber()) {
-                for (Pizza p: this.orders.getOrders().get(x).getCurrentOrder()) {
+        for (int i = 0; i < orders.getOrders().size(); i++) {
+            if (orders.getOrders().get(i).getSerialNumber() == orderNumList.getSelectionModel().getSelectedItem().intValue()) {
+                for (Pizza p : orders.getOrders().get(i).getCurrentOrder()) {
                     currentOrders.add(p.toString());
                     orderPrice += p.price();
                 }
@@ -73,13 +78,21 @@ public class StoreOrdersController {
      */
     @FXML
     protected void cancelOrder(ActionEvent event) {
+        if (orderNumList.getSelectionModel().getSelectedItem() == null) {
+            return;
+        }
+
         for (int x = 0; x < this.orders.getOrders().size(); x++) {
-            if (orderNumList.getSelectionModel().getSelectedIndex() + 1 == this.orders.getOrders().get(x).getSerialNumber()) {
-                orderSerialNumbers.remove(this.orders.getOrders().get(x).getSerialNumber() - 1);
-                orderNumList.setItems(orderSerialNumbers);
-                orders.getOrders().remove(x);
+            if (orderNumList.getSelectionModel().getSelectedItem().intValue() == this.orders.getOrders().get(x).getSerialNumber()) {
+                for (int i = 0; i < orderSerialNumbers.size(); i++) {
+                    if (orderSerialNumbers.get(i) == orderNumList.getSelectionModel().getSelectedItem().intValue()) {
+                        orderSerialNumbers.remove(i);
+                    }
+                }
                 orderTotal.clear();
-                orderDisplay.getItems().clear();
+                orders.getOrders().remove(x);
+                setOrdersList(orders.getOrders());
+                return;
             }
         }
     }
@@ -93,20 +106,19 @@ public class StoreOrdersController {
         orders.export();
     }
 
-    public void addOrder(Order order) {
-        this.orders.getOrders().add(order);
-    }
-
     /**
-     * This method is invoked when the StoreOrdersView is loaded. This method sets the ArrayList of Orders as well as the Combo Box of serial numbers
-     * based on the ArrayList passed to the method from the CurrentOrderController.
+     * This method is invoked when the StoreOrdersView is loaded. This method sets the ArrayList of Orders.
      * @param list is an ArrayList of Order objects passed from the CurrentOrderController.
      */
     public void setOrdersList(ArrayList<Order> list) {
-        if (orders == null) {
-            orders = new StoreOrder(list);
-        }
+        orders = new StoreOrder(list);
+        updateOrderList();
+    }
 
+    /**
+     * This is a helper method to update the list of serial numbers used in the ComboBox.
+     */
+    public void updateOrderList() {
         for (Order order: this.orders.getOrders()) {
             if (orderSerialNumbers.contains(order.getSerialNumber()) == false) {
                 orderSerialNumbers.add(order.getSerialNumber());
