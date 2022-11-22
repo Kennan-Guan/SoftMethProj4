@@ -1,0 +1,11 @@
+Order Number: 1
+Deluxe (New York Style - Brooklyn), Sausage, Pepperoni, GreenPepper, Onion, Mushroom, small, $14.99
+Meatzza (Chicago Style - Stuffed), Sausage, Pepperoni, Beef, Ham, small, $15.99
+Order Total: $33.03
+
+
+Order Number: 2
+BBQChicken (New York Style - Thin), BBQChicken, GreenPepper, Provolone, Cheddar, small, $13.99
+Order Total: $14.92
+
+

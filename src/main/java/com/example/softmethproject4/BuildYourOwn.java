@@ -39,7 +39,7 @@ public class BuildYourOwn extends Pizza {
     @Override
     public String toString() {
         String s = "Build your own (";
-        if (this.getCrust().equals("Pan")) {
+        if (this.getCrust().toString().equalsIgnoreCase("Pan")) {
             s += "Chicago Style - Pan), ";
             for (Topping t: this.getToppings()) {
                 s += t.toString() + ", ";

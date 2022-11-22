@@ -1,7 +1,5 @@
 package com.example.softmethproject4;
 
-import javafx.application.Application;
-import javafx.beans.binding.ObjectExpression;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,7 +26,7 @@ public class CHIStyleController {
 
     private Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
 
-    private final static double TOPPINGPRICE = 1.59;
+    private static final int MAXTOPPINGS = 7;
     @FXML
     private ComboBox toppingOptions;
 
@@ -108,8 +106,8 @@ public class CHIStyleController {
         }
 
         Topping selected = Topping.valueOf(possibleToppingsList.getSelectionModel().getSelectedItem().toString().toUpperCase());
-        if (toppingOptions.getValue().toString().equalsIgnoreCase("Build Your Own") && currentToppings.size() <= 7) {
-            currentToppings.add(selected);
+        if (toppingOptions.getValue().toString().equalsIgnoreCase("Build Your Own") && currentToppings.size() <= MAXTOPPINGS) {
+            currentPizza.getToppings().add(selected);
             offeredToppings.remove(selected);
             setToppings();
             setPrice();
@@ -128,7 +126,7 @@ public class CHIStyleController {
 
         Topping selected = Topping.valueOf(addedToppingsList.getSelectionModel().getSelectedItem().toString().toUpperCase());
         if (toppingOptions.getValue().toString().equalsIgnoreCase("Build Your Own")) {
-            currentToppings.remove(selected);
+            currentPizza.getToppings().remove(selected);
             offeredToppings.add(selected);
             setToppings();
             setPrice();
@@ -142,11 +140,8 @@ public class CHIStyleController {
     @FXML
     protected void setPrice() {
         totalCost.clear();
-        if (toppingOptions.getValue().toString().equalsIgnoreCase("Build Your Own")) {
-            totalCost.appendText(String.format("%.2f",currentPizza.price() + currentPizza.getToppings().size() * TOPPINGPRICE));
-        } else {
-            totalCost.appendText(String.format("%.2f",currentPizza.price()));
-        }
+        totalCost.appendText(String.format("%.2f",currentPizza.price()));
+
     }
 
     /**
@@ -154,9 +149,10 @@ public class CHIStyleController {
      * an alert is shown to the user with confirmation. This method will do nothing if no pizza is selected to add.
      */
     @FXML
-    protected void submitOrder(){
+    protected void submitOrder() {
         if (toppingOptions.getValue() != null) {
             pizzaList.add(currentPizza);
+            currentPizza = null;
             addedToppingsList.getItems().clear();
             toppingOptions.valueProperty().set(null);
             small.setSelected(true);
@@ -187,7 +183,7 @@ public class CHIStyleController {
      */
     protected void resetToppings() {
         offeredToppings.clear();
-        currentToppings.clear();
+        currentToppings = new ArrayList<>();
         for (Topping topping : Topping.values()) {
             offeredToppings.add(topping);
         }

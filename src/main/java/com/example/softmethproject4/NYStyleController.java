@@ -1,15 +1,11 @@
 package com.example.softmethproject4;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 /**
@@ -28,11 +24,10 @@ public class NYStyleController {
 
     private ObservableList<Topping> offeredToppings;
 
-    private ArrayList<Pizza> currentOrder;
 
     private Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
 
-    private final static double TOPPINGPRICE = 1.59;
+    private static final double MAXTOPPINGS = 7;
 
     @FXML
     private ComboBox toppingOptions;
@@ -112,7 +107,7 @@ public class NYStyleController {
 
         Topping selected = Topping.valueOf(possibleToppingsList.getSelectionModel().getSelectedItem().toString().toUpperCase());
         if (toppingOptions.getValue().toString().equalsIgnoreCase("Build Your Own") && currentToppings.size() <= 7) {
-            currentToppings.add(selected);
+            currentPizza.getToppings().add(selected);
             offeredToppings.remove(selected);
             setToppings();
             setPrice();
@@ -131,7 +126,7 @@ public class NYStyleController {
 
         Topping selected = Topping.valueOf(addedToppingsList.getSelectionModel().getSelectedItem().toString().toUpperCase());
         if (toppingOptions.getValue().toString().equalsIgnoreCase("Build Your Own")) {
-            currentToppings.remove(selected);
+            currentPizza.getToppings().remove(selected);
             offeredToppings.add(selected);
             setToppings();
             setPrice();
@@ -145,11 +140,7 @@ public class NYStyleController {
     @FXML
     protected void setPrice() {
         totalCost.clear();
-        if (toppingOptions.getValue().toString().equalsIgnoreCase("Build Your Own")) {
-            totalCost.appendText(String.format("%.2f",currentPizza.price() + currentPizza.getToppings().size() * TOPPINGPRICE));
-        } else {
-            totalCost.appendText(String.format("%.2f",currentPizza.price()));
-        }
+        totalCost.appendText(String.format("%.2f",currentPizza.price()));
     }
 
     /**
@@ -160,6 +151,7 @@ public class NYStyleController {
     protected void submitOrder() {
         if (toppingOptions.getValue() != null) {
             pizzaList.add(currentPizza);
+            currentPizza = null;
             addedToppingsList.getItems().clear();
             toppingOptions.valueProperty().set(null);
             small.setSelected(true);
@@ -180,9 +172,6 @@ public class NYStyleController {
         currentToppings = new ArrayList<>();
         offeredToppings = FXCollections.observableArrayList();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainView.fxml"));
-        MainController mainController = loader.getController();
-
         resetToppings();
 
         possibleToppingsList.setItems(offeredToppings);
@@ -193,7 +182,7 @@ public class NYStyleController {
      */
     protected void resetToppings() {
         offeredToppings.clear();
-        currentToppings.clear();
+        currentToppings = new ArrayList<>();
         for (Topping topping : Topping.values()) {
             offeredToppings.add(topping);
         }

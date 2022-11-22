@@ -91,7 +91,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <TextArea fx:id="crustType" maxHeight="25.0" minHeight="25.0" prefHeight="35.0" prefWidth="125.0" />
+            <TextArea fx:id="crustType" editable="false" maxHeight="25.0" minHeight="25.0" prefHeight="35.0" prefWidth="125.0" />
          </children>
       </HBox>
       <HBox layoutX="54.0" layoutY="546.0">

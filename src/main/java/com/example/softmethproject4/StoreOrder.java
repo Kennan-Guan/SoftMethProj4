@@ -2,7 +2,6 @@ package com.example.softmethproject4;
 
 import java.io.PrintWriter;
 import java.util.*;
-import java.io.*;
 
 /**
  * This class is an implementation of the Customizable interface and defines a StoreOrder object. A StoreOrder object will have a
